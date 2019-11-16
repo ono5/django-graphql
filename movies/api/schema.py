@@ -2,6 +2,7 @@ import graphene
 from graphene_django.types import DjangoObjectType
 from .models import Director, Movie
 import graphql_jwt
+from graphql_jwt.decorators import login_required
 
 
 class MovieType(DjangoObjectType):
@@ -54,7 +55,11 @@ class Query(graphene.ObjectType):
 
     all_directors = graphene.List(DirectorType)
 
+    @login_required
     def resolve_all_movies(self, info, **kwargs):
+        # user = info.context.user
+        # if not user.is_authenticated:
+        #     raise Exception("Auth credentials were not provided")
         return Movie.objects.all()
 
     def resolve_all_directors(self, info, **kwargs):
