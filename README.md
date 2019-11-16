@@ -36,3 +36,11 @@ python manage.py migrate
 # Relay
 
 [Introduction to Relay](https://relay.dev/docs/en/introduction-to-relay)
+
+# Introspection Schema
+
+```
+$ python manage.py graphql_schema
+Successfully dumped GraphQL schema to schema.json
+```
+

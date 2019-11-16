@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
 GRAPHENE = {
     'SCHEMA': 'movies.schema.schema',
+    'SCHEMA_OUTPUT': 'data/myschema.json',
     # https://django-graphql-jwt.domake.io/en/latest/quickstart.html
     'MIDDLEWARE': [
         'graphql_jwt.middleware.JSONWebTokenMiddleware',
