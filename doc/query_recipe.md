@@ -303,3 +303,15 @@ mutation UpdateMovie {
   }
 }
 ```
+
+## Delete Mutation
+
+```bash
+mutation DeleteMovie {
+  deleteMovie(id: 5) {
+    movie {
+      id
+    }
+  }
+}
+```
