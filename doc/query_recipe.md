@@ -72,3 +72,47 @@ query {
   }
 }
 ```
+
+## Relation
+
+## Schema
+
+```bash
+class DirectorType(DjangoObjectType):
+    class Meta:
+        model = Director
+```
+
+## Query
+```bash
+query{
+  movie(id: 4){
+    id
+    title
+    year
+    movieAge
+    director {
+      name
+      surname
+    }
+  }
+}
+```
+
+## Data
+```bash
+{
+  "data": {
+    "movie": {
+      "id": "4",
+      "title": "The terminator",
+      "year": 1984,
+      "movieAge": "Old movie",
+      "director": {
+        "name": "James",
+        "surname": "Cameron"
+      }
+    }
+  }
+}
+```
