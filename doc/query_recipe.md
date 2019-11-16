@@ -31,3 +31,44 @@ query {
 }
 ```
 
+# Params
+
+## schema
+```bash
+class Query(graphene.ObjectType):
+    # Add parameter
+    movie = graphene.Field(MovieType, id=graphene.Int())
+
+
+    def resolve_movie(self, info, **kwargs):
+        id = kwargs.get('id')
+
+        if id is not None:
+            return Movie.objects.get(pk=id)
+
+        return None
+```
+
+## Query
+
+```bash
+query {
+  movie(id: 1) {
+    title
+    year
+  }
+}
+```
+
+## data
+
+```bash
+{
+  "data": {
+    "movie": {
+      "title": "Titanic",
+      "year": 1997
+    }
+  }
+}
+```
