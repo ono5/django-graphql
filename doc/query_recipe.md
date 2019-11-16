@@ -338,3 +338,30 @@ mutation {
   }
 }
 ```
+
+# VerifyToken
+
+# Query
+```bash
+mutation VerifyToken {
+  verifyToken(token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNTczODkyMzg5LCJvcmlnSWF0IjoxNTczODkyMDg5fQ.ZMMmuB_dJFGBeY5fLec7FaGkMTaTsrOmRD0sGckBi1c") {
+    payload
+  }
+}
+```
+
+# Data
+```bash
+{
+  "data": {
+    "verifyToken": {
+      "payload": {
+        "username": "admin",
+        "exp": 1573892389,
+        "origIat": 1573892089
+      }
+    }
+  }
+}
+```
+
