@@ -44,3 +44,14 @@ $ python manage.py graphql_schema
 Successfully dumped GraphQL schema to schema.json
 ```
 
+## React Env
+
+[Apollo Docs](https://www.apollographql.com/docs/react/get-started/)
+
+```bash
+create-react-app frontend
+cd frontend
+npm install apollo-boost @apollo/react-hooks graphql
+npm start
+
+```
