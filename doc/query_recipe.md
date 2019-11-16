@@ -522,3 +522,33 @@ query AllMovies {
   }
 }
 ```
+
+## Relay Mutation
+
+## Query
+```bash
+mutation MutateRelay {
+  updateMovieRelay(input: {id: "TW92aWVOb2RlOjE=", title: "test"}) {
+    movie {
+      id
+      title
+      year
+    }
+  }
+}
+```
+
+## data
+```bash
+{
+  "data": {
+    "updateMovieRelay": {
+      "movie": {
+        "id": "1",
+        "title": "test",
+        "year": 1997
+      }
+    }
+  }
+}
+```
