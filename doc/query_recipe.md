@@ -315,3 +315,26 @@ mutation DeleteMovie {
   }
 }
 ```
+
+# Get Authentication
+
+## Query
+
+```bash
+mutation {
+  tokenAuth(username:"admin", password:"XXXX") {
+    token
+  }
+}
+```
+
+## Data
+```bash
+{
+  "data": {
+    "tokenAuth": {
+      "token": "eyJ0eXAiOiJKV1QiLCbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNTczODkwOTQ1LCJvcmlnSWF0IjoxNTczODkwNjQ1fQ.FZvgdL0mO0ctcE30NhnGPRoc8ZEtRdeFyGcm_kS3MOc"
+    }
+  }
+}
+```

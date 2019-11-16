@@ -29,3 +29,6 @@ INSTALLED_APPS = [
 
 python manage.py migrate
 ```
+
+# Django GraphQL JWT
+[URL](https://django-graphql-jwt.domake.io/en/latest/)
