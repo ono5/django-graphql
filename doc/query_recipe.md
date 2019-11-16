@@ -116,3 +116,82 @@ query{
   }
 }
 ```
+
+# Aliases
+
+Normally, we can not set  the same query name in it.
+However, we can do it by using aliases.
+
+```bash
+# firstMovie and secondMovie are aliases.
+
+query{
+  firstMovie: movie(id: 4){
+    id
+    title
+    year
+    movieAge
+    director {
+      name
+      surname
+    }
+  }
+  secondMovie: movie(id: 2) {
+    id
+    title
+    director {
+      name
+      surname
+    }
+  }
+}
+```
+
+# Fragments
+
+## Query 
+
+```bash
+{
+  firstMovie: movie(id: 4) {
+    ...movieData
+  }
+  secondMovie: movie(id: 2) {
+    ...movieData
+  }
+}
+
+fragment movieData on MovieType {
+  id
+  title
+  director {
+    name
+    surname
+  }
+}
+```
+
+## Data
+
+```bash
+{
+  "data": {
+    "firstMovie": {
+      "id": "4",
+      "title": "The terminator",
+      "director": {
+        "name": "James",
+        "surname": "Cameron"
+      }
+    },
+    "secondMovie": {
+      "id": "2",
+      "title": "Avatar",
+      "director": {
+        "name": "James",
+        "surname": "Cameron"
+      }
+    }
+  }
+}
+```
