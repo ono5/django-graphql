@@ -64,17 +64,21 @@ class MovieNode(DjangoObjectType):
     '''
     class Meta:
         model = Movie
-        filter_fields = ['title', 'year']
+        filter_fields = {
+            'title': ['exact', 'icontains', 'istartswith'],
+            'year': ['exact',],
+        }
         interfaces = (relay.Node, )
 
 
 class Query(graphene.ObjectType):
     # all_movies = graphene.List(MovieType)
-    all_movies = DjangoFilterConnectionField(MovieNode)
     # Add parameter
-    movie = graphene.Field(MovieType,
-                           id=graphene.Int(),
-                           title=graphene.String())
+    # movie = graphene.Field(MovieType,
+    #                        id=graphene.Int(),
+    #                        title=graphene.String())
+    all_movies = DjangoFilterConnectionField(MovieNode)
+    movie = relay.Node.Field(MovieNode)
 
     all_directors = graphene.List(DirectorType)
 
@@ -88,17 +92,17 @@ class Query(graphene.ObjectType):
     def resolve_all_directors(self, info, **kwargs):
         return Director.objects.all()
 
-    def resolve_movie(self, info, **kwargs):
-        id = kwargs.get('id')
-        title = kwargs.get('title')
-
-        if id is not None:
-            return Movie.objects.get(pk=id)
-
-        if title is not None:
-            return Movie.objects.get(title=title)
-
-        return None
+    # def resolve_movie(self, info, **kwargs):
+    #     id = kwargs.get('id')
+    #     title = kwargs.get('title')
+    #
+    #     if id is not None:
+    #         return Movie.objects.get(pk=id)
+    #
+    #     if title is not None:
+    #         return Movie.objects.get(title=title)
+    #
+    #     return None
 
 
 class MovieCreateMutation(graphene.Mutation):

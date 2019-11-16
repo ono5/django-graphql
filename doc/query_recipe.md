@@ -437,3 +437,88 @@ query AllMovies {
   }
 }
 ```
+
+# Filter
+
+## Query
+
+```bash
+query GetMovie{
+  movie(id: "TW92aWVOb2RlOjE="){
+    title
+    year
+  }
+}
+```
+
+## Data
+
+```bash
+{
+  "data": {
+    "movie": {
+      "title": "Titanic",
+      "year": 1997
+    }
+  }
+}
+```
+
+## Query2
+
+```bash
+query AllMovies {
+  allMovies(title: "Titanic") {
+		edges {
+      node{
+        id
+        title
+        director {
+          name
+          surname
+        }
+      }
+    }
+  }
+}
+```
+
+## Data
+```bash
+{
+  "data": {
+    "allMovies": {
+      "edges": [
+        {
+          "node": {
+            "id": "TW92aWVOb2RlOjE=",
+            "title": "Titanic",
+            "director": {
+              "name": "James",
+              "surname": "Cameron"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+## Another
+
+```bash
+  allMovies(title_Icontains: "a") {
+		edges {
+      node{
+        id
+        title
+        director {
+          name
+          surname
+        }
+      }
+    }
+  }
+}
+```
