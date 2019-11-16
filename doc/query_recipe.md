@@ -264,3 +264,28 @@ query MoviesAndDirector($id: Int, $showdirector: Boolean = true){
   "showdirector": false
 }
 ```
+
+# Mutation
+
+## Create Mutation
+
+```
+mutation CreateMovie {
+  createMovie(title: "Test", year: 2002) {
+    movie {
+      id
+      title
+      year
+    }
+  }
+}
+
+query AllMovies {
+  allMovies {
+    id
+    title
+    year
+  }
+}
+
+```
