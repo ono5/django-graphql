@@ -195,3 +195,72 @@ fragment movieData on MovieType {
   }
 }
 ```
+
+# And Query
+
+```
+query MoviesAndDirector{
+  allMovies {
+    title 
+  	year
+    director {
+      surname
+    }
+  }
+}
+
+query MoviesAndDirector{
+  movie(id: 1) {
+    title 
+  	year
+    director {
+      surname
+    }
+  }
+}
+```
+
+# query param $
+
+See the image of the img dir.
+
+```
+query MoviesAndDirector($id: Int){
+  movie(id: $id) {
+    title 
+  	year
+    director {
+      surname
+    }
+  }
+}
+```
+
+
+```bash
+{
+  "id": 1
+}
+```
+
+# Query confidence
+
+```bash
+query MoviesAndDirector($id: Int, $showdirector: Boolean = true){
+  movie(id: $id) {
+    id
+    title 
+  	year
+    director @include(if: $showdirector){
+      surname
+    }
+  }
+}
+```
+
+```bash
+{
+  "id": 4,
+  "showdirector": false
+}
+```
