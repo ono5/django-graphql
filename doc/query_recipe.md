@@ -365,3 +365,75 @@ mutation VerifyToken {
 }
 ```
 
+## Relay
+
+## Query
+```bash
+query AllMovies {
+  allMovies {
+		edges {
+      node{
+        id
+        title
+        director {
+          name
+          surname
+        }
+      }
+    }
+  }
+}
+```
+
+## Data
+
+```bash
+{
+  "data": {
+    "allMovies": {
+      "edges": [
+        {
+          "node": {
+            "id": "TW92aWVOb2RlOjE=",
+            "title": "Titanic",
+            "director": {
+              "name": "James",
+              "surname": "Cameron"
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "TW92aWVOb2RlOjI=",
+            "title": "Avatar",
+            "director": {
+              "name": "James",
+              "surname": "Cameron"
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "TW92aWVOb2RlOjM=",
+            "title": "Million Dollar Baby",
+            "director": {
+              "name": "James",
+              "surname": "Cameron"
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "TW92aWVOb2RlOjQ=",
+            "title": "The terminator",
+            "director": {
+              "name": "James",
+              "surname": "Cameron"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+```

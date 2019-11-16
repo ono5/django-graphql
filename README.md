@@ -32,3 +32,7 @@ python manage.py migrate
 
 # Django GraphQL JWT
 [URL](https://django-graphql-jwt.domake.io/en/latest/)
+
+# Relay
+
+[Introduction to Relay](https://relay.dev/docs/en/introduction-to-relay)
