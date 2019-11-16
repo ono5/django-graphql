@@ -85,5 +85,25 @@ class MovieCreateMutation(graphene.Mutation):
         return MovieCreateMutation(movie=movie)
 
 
+class MovieUpdateMutation(graphene.Mutation):
+    class Arguments:
+        title = graphene.String()
+        year = graphene.Int()
+        id = graphene.ID(required=True)
+
+    movie = graphene.Field(MovieType)
+
+    def mutate(self, info, id, title, year):
+        movie = Movie.objects.get(pk=id)
+        if title is not None:
+            movie.title = title
+        if year is not None:
+            movie.year = year
+        movie.save()
+
+        return MovieCreateMutation(movie=movie)
+
+
 class Mutation:
     create_movie = MovieCreateMutation.Field()
+    update_movie = MovieUpdateMutation.Field()

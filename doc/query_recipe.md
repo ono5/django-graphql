@@ -289,3 +289,17 @@ query AllMovies {
 }
 
 ```
+
+## Update Mutation
+
+```bash
+mutation UpdateMovie {
+  updateMovie(id: 5, title: "Test 2", year: 1900) {
+    movie {
+      id
+      title
+      year
+    }
+  }
+}
+```
