@@ -552,3 +552,85 @@ mutation MutateRelay {
   }
 }
 ```
+
+# Pagination
+
+## Query
+
+```bash
+query AllMovies {
+  allMovies(first: 2) {
+    pageInfo{
+      startCursor
+      startCursor
+      hasNextPage
+      hasPreviousPage
+    }
+    edges {
+      node {
+        id
+        title
+        director {
+          name
+          surname
+        }
+      }
+    }
+  }
+}
+```
+
+## Data
+```bash
+{
+  "data": {
+    "allMovies": {
+      "pageInfo": {
+        "startCursor": "YXJyYXljb25uZWN0aW9uOjA=",
+        "hasNextPage": true,
+        "hasPreviousPage": false
+      },
+      "edges": [
+        {
+          "node": {
+            "id": "TW92aWVOb2RlOjE=",
+            "title": "Titanic",
+            "director": {
+              "name": "James",
+              "surname": "Cameron"
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "TW92aWVOb2RlOjI=",
+            "title": "Avatar",
+            "director": {
+              "name": "James",
+              "surname": "Cameron"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+## Fileds
+
+```bash
+id: ID!
+name: String!
+surname: String!
+movieSet(
+    before: String
+    after: String
+    first: Int
+    last: Int
+    title: String
+    title_Icontains: String
+    title_Istartswith: String
+    year: Int
+);
+```
